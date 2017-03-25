@@ -20,17 +20,29 @@ public class locationData {
 	public static HashMap<String,String> HOUcustomerBlock7 =new HashMap<String,String>();
 	public static HashMap<String,String> HOUcustomerBlock8 =new HashMap<String,String>();
 	
+	public static HashMap<String,String> Nycbranchblock = new HashMap<String,String>();
+	
+	public static HashMap<String,String> NYCaccountblock1 =new HashMap<String,String>();
+	public static HashMap<String,String> NYCaccountblock2 =new HashMap<String,String>();
+	public static HashMap<String,String> NYCaccountblock3 =new HashMap<String,String>();
+	public static HashMap<String,String> NYCaccountblock4 =new HashMap<String,String>();
+	public static HashMap<String,String> NYCaccountblock5 =new HashMap<String,String>();
+	public static HashMap<String,String> NYCaccountblock6 =new HashMap<String,String>();
 	
 	public static HashMap<String,HashMap<String,String>> NYCdepositorBlocks =new HashMap<String,HashMap<String,String>>();
 	public static HashMap<String,HashMap<String,String>> HOUcustomerBlocks =new HashMap<String,HashMap<String,String>>();
-	
+	public static HashMap<String,HashMap<String,String>> NYCaccountBlocks =new HashMap<String,HashMap<String,String>>();
 	public void splitData() throws FileNotFoundException{
 	File depositorfile = new File("C:/Users/Vinod Chokkula/dbproj/JoinImplementation/src/Depositor.csv");
 	File locationfile = new File("C:/Users/Vinod Chokkula/dbproj/JoinImplementation/src/Depositor.csv");
-	File accountfile = new File("C:/Users/Vinod Chokkula/dbproj/JoinImplementation/src/Depositor.csv");
+	//
 	File customerfile = new File("C:/Users/Vinod Chokkula/dbproj/JoinImplementation/src/Customer.csv");
+	
+	File branchfile= new File("C:/Users/Vinod Chokkula/dbproj/JoinImplementation/src/branch.csv");
+	File accountfile = new File("C:/Users/Vinod Chokkula/dbproj/JoinImplementation/src/Account.csv");
 	int depcount=0;
 	int custcount=0;
+	int acccount=0;
 	Scanner sc=new Scanner(depositorfile);
 	while(sc.hasNextLine()){
 	String[] depositorArray=sc.nextLine().split(",");
@@ -106,6 +118,59 @@ public class locationData {
 	
 	}
 	sc.close();
-	}
+	
+	//branch Block
+	 sc=new Scanner(branchfile);
+	 String[] branchArray=sc.nextLine().split(",");
+	 String temp=branchArray[1]+','+branchArray[2];
+	 Nycbranchblock.put(branchArray[0],temp);
+	 sc.close();
 
+	 //Account Blocks
+	 
+	 sc=new Scanner(accountfile);
+		while(sc.hasNextLine()){
+		String[] accountArray=sc.nextLine().split(",");
+		String nonKeyValue=accountArray[1]+":"+accountArray[2];
+		
+		if(depcount==0 || depcount<10){
+			NYCaccountblock1.put(accountArray[0], nonKeyValue);
+			acccount++;
+			}
+			else if(depcount>=10 && depcount<20){
+				NYCaccountblock2.put(accountArray[0], nonKeyValue);
+				acccount++;
+			}
+			else if(depcount>=20 && depcount<30){
+				NYCaccountblock3.put(accountArray[0], nonKeyValue);
+				acccount++;
+			}
+			else if(depcount>=30 && depcount<40){
+				NYCaccountblock4.put(accountArray[0], nonKeyValue);
+				acccount++;
+			}
+			else if(depcount>=40 && depcount<50){
+				NYCaccountblock5.put(accountArray[0], nonKeyValue);
+				acccount++;
+			}
+			else if(depcount>=50 && depcount<60){
+				NYCaccountblock6.put(accountArray[0], nonKeyValue);
+				acccount++;
+			}
+			
+			
+		NYCaccountBlocks.put("1", NYCaccountblock1);
+		NYCaccountBlocks.put("2", NYCaccountblock1);
+		NYCaccountBlocks.put("3", NYCaccountblock1);
+		NYCaccountBlocks.put("4", NYCaccountblock1);
+		NYCaccountBlocks.put("5", NYCaccountblock1);
+		NYCaccountBlocks.put("6", NYCaccountblock1);
+		
+		
+		}
+		sc.close();
+		
+	}
+	
+	
 }
