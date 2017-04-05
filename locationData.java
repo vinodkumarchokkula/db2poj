@@ -179,11 +179,11 @@ public class locationData {
 		if(accountArray[1].equalsIgnoreCase("Chinatown")){
 			SFOAccountblock1.put(accountArray[0], nonKeyValue);	
 		}
-		if(accountArray[1].equalsIgnoreCase("Aksarben") || accountArray[1].equals("102 Street")){
-			if(OMAAccountblock1.size()!=10){
+		if(accountArray[1].equalsIgnoreCase("Aksarben") || accountArray[1].equalsIgnoreCase("102 Street")){
+			if(OMAAccountblock1.size()<10){
 				OMAAccountblock1.put(accountArray[0], nonKeyValue);
 			}
-			else if((OMAAccountblock1.size()!=10)){OMAAccountblock2.put(accountArray[0], nonKeyValue);}
+			else if((OMAAccountblock1.size()>=10)){OMAAccountblock2.put(accountArray[0], nonKeyValue);}
 		}
 		
 		if(acccount==0 || acccount<10){
@@ -235,21 +235,21 @@ public class locationData {
 		
 		
 		System.out.println("SFO Branch :"+SFObranchblock);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("OMA account :"+OMAaccountBlocks);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("SFO ACCOunt :"+SFOAccountBlocks);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("NYC depositor :"+NYCdepositorBlocks);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("HOU customer :"+HOUcustomerBlocks);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("NYC ACCOunt :"+NYCaccountBlocks);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("OMA dep :"+OMADepositorBlocks);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		System.out.println("NYC branch :"+Nycbranchblock);
-		System.out.println("==========================");
+		System.out.println("================================================");
 		
 		
 		
